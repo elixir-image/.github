@@ -1,6 +1,4 @@
-# elixir-image
-
-Image processing for Elixir.
+# Image processing for Elixir.
 
 This organization hosts a family of related libraries built around the [`image`](https://hex.pm/packages/image) package — a fast, memory-efficient wrapper over [libvips](https://www.libvips.org) (via [`vix`](https://hex.pm/packages/vix)) — together with peripheral packages for colour science, lens correction, ML-driven vision, OCR, and QR codes. The packages share conventions, work cleanly together, and each can also be used on its own.
 
