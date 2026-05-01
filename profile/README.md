@@ -13,7 +13,9 @@ This organization hosts a family of related libraries built around the [`image`]
 | Detect objects, segment, classify, describe, or match images with ML | [`image_vision`](https://github.com/elixir-image/image_vision) |
 | Encode or decode QR codes | [`image_qrcode`](https://github.com/elixir-image/image_qrcode) |
 | Correct camera-lens distortion, vignetting, or chromatic aberration | [`image_lens_correction`](https://github.com/elixir-image/image_lens_correction) |
-| Run OCR over image content | [`image_ocr`](https://github.com/kipcole9/image_ocr) |
+| Run OCR over image content | [`image_ocr`](https://github.com/elixir-image/image_ocr) |
+| Serve images over HTTP with on-the-fly transforms | [`image_plug`](https://github.com/elixir-image/image_plug) *(coming soon)* |
+| Render `:image` content in Phoenix LiveView / HEEx | [`image_components`](https://github.com/elixir-image/image_components) *(coming soon)* |
 
 ## Packages
 
@@ -40,6 +42,14 @@ QR-code encoding (via Nayuki's [QR-Code-generator](https://github.com/nayuki/QR-
 ### [`image_ocr`](https://github.com/elixir-image/image_ocr) &nbsp; [![Hex](https://img.shields.io/hexpm/v/image_ocr.svg)](https://hex.pm/packages/image_ocr) &nbsp;[![Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/image_ocr)
 
 Idiomatic Elixir interface to [Tesseract](https://github.com/tesseract-ocr/tesseract) 5 via a NIF over the C++ API. Accepts `Vix.Vips.Image` structs, file paths, or in-memory binaries.
+
+### [`image_plug`](https://github.com/elixir-image/image_plug) &nbsp; *(coming soon — not yet published)*
+
+A `Plug` for serving images backed by `:image`. Aimed at the use case of "expose a URL that returns a transformed image" — query-string-driven resize, crop, format conversion, quality, and metadata stripping — without writing per-route controller code. Designed to drop straight into a Phoenix or plain `Plug` pipeline.
+
+### [`image_components`](https://github.com/elixir-image/image_components) &nbsp; *(coming soon — not yet published)*
+
+Phoenix LiveView / HEEx components for rendering `:image` content in web UIs. Targets common patterns — responsive `srcset`, lazy loading, blurhash placeholders, art-direction with `<picture>` — backed by `:image` for the underlying transforms.
 
 ## Built on
 
