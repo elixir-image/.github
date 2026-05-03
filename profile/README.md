@@ -8,7 +8,7 @@ This organization hosts a family of related libraries built around the [`image`]
 |---|---|
 | Open, transform, draw on, or composite images | [`image`](https://github.com/elixir-image/image) |
 | Build palettes, convert between colour spaces, or work with CSS Color 4 / 5 | [`color`](https://github.com/elixir-image/color) |
-| Detect objects, segment, classify, describe, or match images with ML | [`image_vision`](https://github.com/elixir-image/image_vision) |
+| Detect objects or faces, segment, classify, describe, or match images with ML | [`image_vision`](https://github.com/elixir-image/image_vision) |
 | Encode or decode QR codes | [`image_qrcode`](https://github.com/elixir-image/image_qrcode) |
 | Correct camera-lens distortion, vignetting, or chromatic aberration | [`image_lens_correction`](https://github.com/elixir-image/image_lens_correction) |
 | Run OCR over image content | [`image_ocr`](https://github.com/elixir-image/image_ocr) |
@@ -27,7 +27,7 @@ A comprehensive colour library with **no runtime dependencies**. Covers 20+ colo
 
 ### [`image_vision`](https://github.com/elixir-image/image_vision) &nbsp; [![Hex](https://img.shields.io/hexpm/v/image_vision.svg)](https://hex.pm/packages/image_vision) &nbsp;[![Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/image_vision)
 
-Opinionated, defaults-first computer vision for `:image`. Answers the common "what's in this image?" questions — object detection, instance and semantic segmentation, foreground extraction, image-to-text description, and label matching — with strong defaults so callers don't need ML expertise. Built on [Bumblebee](https://hex.pm/packages/bumblebee), [Nx](https://hex.pm/packages/nx), and ONNX models.
+Opinionated, defaults-first computer vision for `:image`. Answers the common "what's in this image?" questions — image classification and embeddings, object detection, face detection with landmarks, promptable and panoptic segmentation, background removal, natural-language captioning, and zero-shot label matching — with strong defaults so callers don't need ML expertise. Built on [Bumblebee](https://hex.pm/packages/bumblebee), [Ortex](https://hex.pm/packages/ortex), and [Nx](https://hex.pm/packages/nx) over ONNX and Hugging Face models.
 
 ### [`image_lens_correction`](https://github.com/elixir-image/image_lens_correction) &nbsp; [![Hex](https://img.shields.io/hexpm/v/image_lens_correction.svg)](https://hex.pm/packages/image_lens_correction) &nbsp;[![Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/image_lens_correction)
 
@@ -35,11 +35,11 @@ Corrections for the four most common camera-lens defects — radial (barrel / pi
 
 ### [`image_qrcode`](https://github.com/elixir-image/image_qrcode) &nbsp; [![Hex](https://img.shields.io/hexpm/v/image_qrcode.svg)](https://hex.pm/packages/image_qrcode) &nbsp;[![Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/image_qrcode)
 
-QR-code encoding (via Nayuki's [QR-Code-generator](https://github.com/nayuki/QR-Code-generator)) and decoding (via [quirc](https://github.com/dlbeer/quirc)) for `:image`. Produces and consumes `Vix.Vips.Image` structs directly so QR codes flow through the rest of the `:image` pipeline (overlay, embed, scale, recolour) without temporary files.
+QR-code encoding (via Nayuki's [QR-Code-generator](https://github.com/nayuki/QR-Code-generator)) and decoding (via [quirc](https://github.com/dlbeer/quirc)) for `:image`. Produces and consumes `Vix.Vips.Image` structs directly so QR codes flow through the rest of the `:image` pipeline (overlay, embed, scale, recolour) without temporary files. Both encoder and decoder run on dirty CPU schedulers, with precompiled NIF artefacts for Linux (gnu/musl × x86_64/aarch64/armv7), macOS (x86_64/arm64) and Windows (x86_64).
 
 ### [`image_ocr`](https://github.com/elixir-image/image_ocr) &nbsp; [![Hex](https://img.shields.io/hexpm/v/image_ocr.svg)](https://hex.pm/packages/image_ocr) &nbsp;[![Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/image_ocr)
 
-Idiomatic Elixir interface to [Tesseract](https://github.com/tesseract-ocr/tesseract) 5 via a NIF over the C++ API. Accepts `Vix.Vips.Image` structs, file paths, or in-memory binaries.
+Idiomatic Elixir interface to [Tesseract](https://github.com/tesseract-ocr/tesseract) 5 via a NIF over the C++ API. Accepts `Vix.Vips.Image` structs, file paths, or in-memory binaries, with auto-normalisation of pixel format before recognition. Returns plain text or per-word results with confidence and bounding boxes. Locale handling accepts ISO 639-1, BCP-47, native Tesseract codes, and `+`-joined combinations. Includes a `NimblePool`-backed pool for true parallel recognition across schedulers.
 
 ### [`image_plug`](https://github.com/elixir-image/image_plug) &nbsp; *(coming soon — not yet published)*
 
